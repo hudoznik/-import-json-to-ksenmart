@@ -10,8 +10,6 @@ error_reporting(E_ALL);
 
 defined('_JEXEC') or die;
 
-// use Joomla\Registry\Registry;
-// use Joomla\Utilities\ArrayHelper;
 jimport('joomla.registry.registry');
 jimport('joomla.application.component.controller');
 
@@ -26,11 +24,11 @@ class KsenMartControllerload1c extends JControllerLegacy {
     protected $msg;
 
     private function getToken(){
-        return  md5(date('Y-m-d H'));
+        return  md5(date('Y-m-d')."Кодовая фраза");
     }
 
     public function getTokens(){
-        echo  md5(date('Y-m-d H'));
+        echo  md5(date('Y-m-d')."Кодовая фраза");
     }
 
     private function verifiautch(){
@@ -48,7 +46,7 @@ class KsenMartControllerload1c extends JControllerLegacy {
     }
 
     private function price_old(){
-//         $this->verifiautch();
+        $this->verifiautch();
         $app = JFactory::getApplication();
         $db = JFactory::getDBO();
         $result = new stdClass();
@@ -61,7 +59,6 @@ class KsenMartControllerload1c extends JControllerLegacy {
         ( isset($type) && $type === true ) ? $this->display($type, " Тип загрузки не существует") : "";
         ( isset($type) && $type === true ) ? $error = true : "";
         ( !$error )? $list = $load->get('list',true) : $error = true;
-//         var_dump($error);
         (isset($list) && $list === true || count($list) == 0 ) ? $this->display($list, " Список данных пустой или не существует") : $this->row = $list;
         $this->result =  array("err"=>$error,"msg"=>null,"data"=>null);
         if (!$this->result['err']){
@@ -85,9 +82,10 @@ class KsenMartControllerload1c extends JControllerLegacy {
 
     public function display( $err = false, $msg = null, $data = ""){
 
-file_put_contents(JPATH_CACHE . "/log.php", file_get_contents('php://input'), FILE_APPEND);
-file_put_contents(JPATH_CACHE . "/log.php", "\n", FILE_APPEND);
-// file_put_contents(JPATH_CACHE . "/log.php", "\n", FILE_APPEND);
+//         Если нужен лог для тестирования
+//         file_put_contents(JPATH_CACHE . "/log.php", file_get_contents('php://input'), FILE_APPEND);
+//         file_put_contents(JPATH_CACHE . "/log.php", "\n", FILE_APPEND);
+
         $this->verifiautch();
         $app = JFactory::getApplication();
         $db = JFactory::getDBO();
@@ -109,29 +107,17 @@ file_put_contents(JPATH_CACHE . "/log.php", "\n", FILE_APPEND);
 
     }
 
-    private function tests(){
-
-        echo date('Y m d H:i');
-        echo time();
-        echo "\n";
-
-        date_default_timezone_set('Europe/Moscow');
-$date = date('m/d/Y h:i:s a', time());
-        echo time();
-        echo "\n";
-        echo date('Y m d H:i', time() + 60*60);
-        echo "\n";
-    }
 
     private function closesite(){
-     return;
+//         Если на время обновления надо закрыть сайт
+//         Коментируем строку ниже и в
+        return;
         $this->verifiautch();
         date_default_timezone_set('Europe/Moscow');
         $temp = JFactory::getConfig();
         $config = new JRegistry(new JConfig());
         $config->set('offline',1);
         $config->set('offline_message',"Сайт закрыт на техническое обслуживание.<br />Оринтеровочное время возобновления работы ". date('Y-m-d H:i', time() + 60*60) );
-
         jimport('joomla.filesystem.path');
         jimport('joomla.filesystem.file');
         $file = JPATH_CONFIGURATION . '/configuration.php';
@@ -142,9 +128,9 @@ $date = date('m/d/Y h:i:s a', time());
         chmod($file, 0644);
         fclose($fp);
     }
+
     private function opensite(){
         $this->verifiautch();
-
         $temp = JFactory::getConfig();
         $config = new JRegistry(new JConfig());
         $config->set('offline',0);
@@ -166,7 +152,8 @@ $date = date('m/d/Y h:i:s a', time());
     }
 
     private function clearstock(){
-//      return;
+//         Если обнуление склада не нужно, то либо раскоментировать строку, либо вообще не реализовывать вызов
+//         return;
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->update('#__ksenmart_products')
@@ -187,6 +174,7 @@ $date = date('m/d/Y h:i:s a', time());
 
     }
 
+//     Получение всех цен для сравнения если нужно
     private function getAllPrice(){
         $this->verifiautch();
         $db = JFactory::getDbo();
@@ -201,7 +189,6 @@ $date = date('m/d/Y h:i:s a', time());
 
     }
 
-//     http://192.168.7.100/torg/odata/standard.odata/InformationRegister_%D0%A6%D0%B5%D0%BD%D1%8B%D0%9D%D0%BE%D0%BC%D0%B5%D0%BD%D0%BA%D0%BB%D0%B0%D1%82%D1%83%D1%80%D1%8B_RecordType?$format=json;&$filter=%D0%9D%D0%BE%D0%BC%D0%B5%D0%BD%D0%BA%D0%BB%D0%B0%D1%82%D1%83%D1%80%D0%B0_Key%20eq%20guid%2766494482-3fe8-11e9-9986-002590d7ecb0%27%20and%20%D0%A2%D0%B8%D0%BF%D0%A6%D0%B5%D0%BD_Key%20eq%20guid%27c2e1475c-f156-11de-a2fc-000c6e2a68e2%27&$select=%D0%A6%D0%B5%D0%BD%D0%B0
 
     public function loadprice() {
         $this->verifiautch();
