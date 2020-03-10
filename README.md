@@ -30,7 +30,7 @@ authorization: token
 </code>
 
 Отправка данных о продукте
-<code>
+<div class="highlight highlight-source-json"><pre>
     {
     "type": "products",
     "row": [
@@ -75,4 +75,5 @@ authorization: token
             "files": "71147ded-ec5d-11e7-fc8f-0022b050586a.jpeg"
         }
     }
-</code>
+</pre>
+</div>
