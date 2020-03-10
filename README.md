@@ -10,22 +10,27 @@ content-type:application/json
 accept:application/json
 authorization: token
 
-<h>Token генерируется динамически от даты</h>
+<h2>Token генерируется динамически от даты</h2>
 
 
 Пример отправляемых данных
 
 Закрытие сайта
-{
-    "type": "closesite"
-}
+<code>
+    {
+        "type": "closesite"
+    }
+</code>
 
 Открытие
-{
-    "type": "clearstock"
-}
+<code>
+    {
+        "type": "clearstock"
+    }
+</code>
 
 Отправка данных о продукте
+<code>
     {
     "type": "products",
     "row": [
@@ -70,3 +75,4 @@ authorization: token
             "files": "71147ded-ec5d-11e7-fc8f-0022b050586a.jpeg"
         }
     }
+</code>
