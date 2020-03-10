@@ -30,13 +30,13 @@ authorization: token
     "type": "products",
     "row": [
         {
-            "title": "Ecola DL1662 MR16 GU5.3 св-к встр.Стекло круг с прозр..стразами хром зеркало-хром 25-93 FW16RGECB",
+            "title": "Ecola DL1662 MR16",
             "guid": "2d6c2142-207d-11e8-db81-0022b050586a",
             "in_stock": "7",
             "price": "250",
-            "product_code": "Т2500500420",
+            "product_code": "123",
             "promotion": 0,
-            "categories": "Освещение,Светильники точечные",
+            "categories": "Освещение;Светильники точечные",
             "manufacturer": "Ecola",
             "properti": [
                 {
@@ -59,13 +59,13 @@ authorization: token
             "files": "c7873bd8-4aab-11e8-3b89-0022b050586a.jpeg"
         },
         {
-            "title": "Панель АКВ полноцветная гладкая Орхидея (2,07м х 0,695м, 3мм",
+            "title": "Панель АКВ полноцветная",
             "guid": "a37cd518-a61b-11e5-cf95-448a5b29c303",
             "in_stock": "0",
             "price": "1470",
-            "product_code": "Т5400700011",
+            "product_code": "564",
             "promotion": 0,
-            "categories": "Панели стеновые,вагонка, сайдинг,Фартуки кухонные",
+            "categories": "Панели стеновые",
             "manufacturer": "АКВАТОН",
             "files": "71147ded-ec5d-11e7-fc8f-0022b050586a.jpeg"
         }
