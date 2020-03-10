@@ -4,7 +4,7 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 /**
- * @copyright   Copyright (C) 2013. All rights reserved.
+ * @copyright   Copyright (C) 2019. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
