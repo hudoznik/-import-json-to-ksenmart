@@ -1,0 +1,16 @@
+{
+    "PHP": {
+        "Authors": [
+            {
+                "Email": "%{EMAIL}",
+                "Name": "%{AUTHOR}"
+            }
+        ],
+        "Description": "A PHP component",
+        "Icon": "tool-text",
+        "Name": "import_json_to_ksenmart",
+        "ServiceTypes": [
+            "PHP/Joomla-component"
+        ]
+    }
+}
