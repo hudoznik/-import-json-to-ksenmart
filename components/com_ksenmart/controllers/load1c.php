@@ -27,8 +27,8 @@ class KsenMartControllerload1c extends JControllerLegacy {
         return  md5(date('Y-m-d')."Кодовая фраза");
     }
 
-    public function getTokens(){
-        echo  md5(date('Y-m-d')."Кодовая фраза");
+    public function getTokensTest(){
+//         echo  md5(date('Y-m-d')."Кодовая фраза");
     }
 
     private function verifiautch(){
