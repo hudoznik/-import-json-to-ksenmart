@@ -30,7 +30,7 @@ authorization: token
 </code>
 
 Отправка данных о продукте
-<div class="highlight highlight-source-json"><pre>
+<pre>
     {
     "type": "products",
     "row": [
@@ -76,4 +76,3 @@ authorization: token
         }
     }
 </pre>
-</div>
